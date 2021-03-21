@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <title>Binding</title>
+    <style>
+        #box {
+            min-width: 300px;
+            min-height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5" id="app">
+        <div id="box" class="row" :class="[ hovered ? 'bg-primary' :'bg-info']" @mouseover='hovered=true' @mouseout='hovered=false'>
+            <!-- <div id="box" class="row" :class="{ 'bg-info' : !hovered, 'bg-primary' : hovered}" @mouseover='hovered=true' @mouseout='hovered=false'> -->
+            <div class="col my-auto text-center text-light">
+                Mouse over here
+            </div>
+        </div><br>
+
+        <div class="alert" :class="select">
+            This is {{ select}}
+        </div>
+
+        <br>
+        <select v-model="select">
+            <option value="alert-primary">Primary</option>
+            <option value="alert-secondary">Secondary</option>
+            <option value="alert-success">Success</option>
+            <option value="alert-danger">Danger</option>
+            <option value="alert-warning">Warning</option>
+            <option value="alert-info">Info</option>
+            <option value="alert-light">Light</option>
+            <option value="alert-dark">Dark</option>
+        </select>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                hovered: false,
+                select: 'alert-primary'
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>
